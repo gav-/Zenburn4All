@@ -1,5 +1,8 @@
 # MATE Terminal Zenburn
 
+## Screenshot
+![Alt text](screenshot.png?raw=true "MATE Terminal Zenburn")
+
 ## Installation notes
 - Create a new target profile in `mate-terminal`:
   - `File -> New Profile...`
@@ -12,6 +15,3 @@
 
 ## Gnome Terminal
 This Zenburn theme is probably suitable for `gnome-terminal` as well, but the script is only designed for Mint MATE. It should be possible to cut and paste the values from the `zenburn_colours` file into the correct key values in `dconf-editor` to achieve the same effect.
-
-## Screenshot
-![Alt text](screenshot.png?raw=true "MATE Terminal Zenburn")
