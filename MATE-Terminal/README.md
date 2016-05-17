@@ -1,6 +1,5 @@
 # MATE Terminal Zenburn
 
-## Screenshot
 ![Alt text](screenshot.png?raw=true "MATE Terminal Zenburn")
 
 ## Installation notes
