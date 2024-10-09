@@ -23,12 +23,15 @@
 #  DEALINGS IN THE SOFTWARE.
 
 PROFILE=""
-SCHEMA_PROFILES_PATH="org.mate.terminal.profile:/org/mate/terminal/profiles"
+MATE_PROFILES_PATH="/org/mate/terminal/profiles"
 
 # Load zenburn colours.
 RELDIR=`dirname "$0"`
 cd "$RELDIR"
-. $(pwd)/zenburn_colours
+if [[ ! -r ./zenburn_colours ]]; then
+    echo "!! Can't find zenburn_colours"
+    exit 1
+fi
 
 #
 # script usage.
@@ -64,13 +67,6 @@ if [ "X${PROFILE}" == "X" ]; then
 fi
 
 #
-# Set a key and value in a mate terminal profile.
-# 
-setKeyValue () {
-    gsettings set "${SCHEMA_PROFILES_PATH}/${PROFILE}/" "$1" "$2"
-}
-
-#
 # Main
 #
 
@@ -84,12 +80,6 @@ echo ""
 echo " + Press <Enter> to continue or <Ctrl-C> to break."
 read book
 
-setKeyValue "background-color" "$background_color"
-setKeyValue "background-type" "$background_type"
-setKeyValue "bold-color-same-as-fg" "$bold_color_same_as_fg"
-setKeyValue "foreground-color" "$foreground_color"
-setKeyValue "palette" "$palette"
-setKeyValue "visible-name" "$visible_name"
-setKeyValue "use-theme-colors" "$use_theme_colors"
+dconf load "${MATE_PROFILES_PATH}/${PROFILE}/" < zenburn_colours
 
 echo " + Log out or close all mate-terminal sessions to see changes."
